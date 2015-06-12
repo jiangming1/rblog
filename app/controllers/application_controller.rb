@@ -28,5 +28,11 @@ protected
     devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:account_update) << :username
   end
-
+  def authenticate_user_from_token!
+    token = params[:token].presence
+    user = token && User.find_by_authentication_token(token.to_s)
+    if user
+       sign_in user, store: false
+    end
+  end
 end

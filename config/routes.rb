@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :ls
   resources :welcomes
   #devise_for :users
-  devise_for :users, :controllers => {:registrations => "users/registrations"}   
+  devise_for :users, :controllers => {:registrations => "users/registrations",:sessions=>"users/sessions"}   
 root :to => "ls#index"
   resources :azufangs
   resources :p2pproducts
