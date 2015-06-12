@@ -9,6 +9,8 @@ class Users::SessionsController < Devise::SessionsController
 
    respond_to do |format|
        resource.ensure_authentication_token
+
+        format.html { redirect_to documents_url, notice: 'Blog was successfully created.' }
        format.json { 
          render json: {token:resource.authentication_token, user_id: resource.id}
        }
